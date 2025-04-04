@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>程式碼片段管理系統</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">程式碼片段管理系統</h1>
+        
+        <form action="/add" method="post" class="mb-4">
+            <div class="mb-3">
+                <label class="form-label">標題</label>
+                <input type="text" name="title" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">程式語言</label>
+                <input type="text" name="language" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">程式碼</label>
+                <textarea name="code" class="form-control" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">新增程式碼片段</button>
+        </form>
+        
+        <h2 class="mt-4">已儲存的程式碼片段</h2>
+        <ul class="list-group">
+            {% for snippet in snippets %}
+            <li class="list-group-item">
+                <h5>{{ snippet[1] }} <small class="text-muted">({{ snippet[2] }})</small></h5>
+                <pre class="bg-light p-3">{{ snippet[3] }}</pre>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
